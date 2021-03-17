@@ -1,0 +1,126 @@
+.list-group {
+  color: black;
+  padding: 0;
+}
+
+.badge.badge-success {
+  border-radius: 10px;
+  padding: 4px 7px 3px 7px;
+  background-color: #bfbfbfbf;
+  color: #fff;
+  margin-left: 8px;
+}
+
+.list-group-item.item,
+.list-group-item.header {
+  padding: 0;
+  display: flex;
+}
+
+.list-group-item.item p,
+.list-group-item.header p {
+  padding-top: 12px;
+  padding-left: 22px;
+  width: 80%;
+  margin-bottom: 0;
+}
+
+.list-group-item.header p {
+  margin-bottom: 10px;
+}
+
+.list-group .header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  text-align: left;
+  background-color: #f4fcef;
+}
+
+.list-group .footer {
+  border: 0;
+  border-top: solid 1px #dfdfdf;
+}
+
+.list-group .item:hover {
+  cursor: pointer;
+  background-color: #f4fcef;
+}
+
+.search {
+  margin-top: 10px;
+  width: 111px;
+  margin-right: 20px;
+  height: 25px;
+  border:0;
+  background-color: #f4fcef;
+  border-bottom: solid 1px #dfdfdf;
+}
+
+.search:focus {
+  outline: 0;
+}
+
+.list-group-item.item:hover,
+.list-group-item.item:hover button.list{
+  transition: 0.1s;
+  background-color: #f4fcef;
+}
+
+.list-group-item button:hover {
+  background-color: #DAE4D3!important;
+}
+
+.list-group-item button.disabled:hover {
+  background-color: rgba(0, 0, 0, 0)!important;
+}
+
+button.header {
+  background-color: #f4fcef!important;
+}
+
+input.rename {
+  padding-left: 20px;
+  width: 80%;
+  border: 0;
+}
+
+input.rename:focus {
+  outline: 0;
+}
+
+.over_li {
+   list-style-type: none;
+}
+
+.over_li.hide {
+  display: none;
+}
+
+.under_ul {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.list-group-item.item.editCategoryInput {
+  display: none;
+}
+
+.fas.fa-fire, .fas.fa-bookmark {
+  margin-right: 3px;
+  height: 29px;
+}
+
+.fas.fa-fire {
+  color: #EE652A;
+}
+
+p .fas.fa-bookmark {
+  color: #8E19A6;
+}
+
+button .fas.fa-bookmark {
+  color: #8E19A6;
+  height: 0px;
+}
