@@ -1,15 +1,15 @@
 {
-  "name": "redux-memory-base",
+  "name": "RMB",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://serjride.github.io/redux-memory-base",
+  "homepage": "http://serjride.github.io/RMB",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-redux": "^6.0.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.8",
+    "react-scripts": "^4.0.3",
     "redux": "^4.0.1"
   },
   "scripts": {

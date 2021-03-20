@@ -7,6 +7,7 @@ import Header from '../header';
 import Categories from '../categories';
 import Questions from '../questions';
 import Confirm from '../confirm';
+import { getServerRecord } from '../../service/server-requests.js';
 
 import Alert from '../alerts';
 import { connect } from 'react-redux';
@@ -21,6 +22,8 @@ class App extends Component {
     let left = <Categories />
     let right = <Questions />;
     if (this.props.state[5]) alert = <Alert />
+
+    getServerRecord('text')
 
     return (
       <div className="app">
