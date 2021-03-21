@@ -7,13 +7,16 @@ import Header from '../header';
 import Categories from '../categories';
 import Questions from '../questions';
 import Confirm from '../confirm';
-import { getServerRecord } from '../../service/server-requests.js';
+import { serverSynch } from '../../service/server-requests.js';
 
 import Alert from '../alerts';
 import { connect } from 'react-redux';
 // import { waveEffects } from '../../service/effects';
 
 import Row from '../row';
+
+// serverSynch('get')
+// serverSynch('post')
 
 class App extends Component {
 
@@ -22,8 +25,6 @@ class App extends Component {
     let left = <Categories />
     let right = <Questions />;
     if (this.props.state[5]) alert = <Alert />
-
-    getServerRecord('text')
 
     return (
       <div className="app">

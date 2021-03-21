@@ -5,6 +5,8 @@
   "homepage": "http://serjride.github.io/RMB",
   "dependencies": {
     "gh-pages": "^2.0.1",
+    "isomorphic-fetch": "^3.0.0",
+    "node-fetch": "^2.6.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-redux": "^6.0.1",
