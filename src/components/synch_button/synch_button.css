@@ -1,0 +1,33 @@
+
+
+#synchButton .synchButton.animation {
+  animation: rotate 1.5s linear infinite;
+  line-height: 1
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(-360deg);
+  }
+}
+
+#synchButton .synchButton:focus {
+  box-shadow: 0 0 0 0.2rem rgb(255 255 255 / 0%);
+}
+
+#synchButton .synchButton:hover {
+  background-color: rgb(255 255 255 / 100%)
+}
+
+#synchButton .synchButton {
+  width: 30px;
+  height: 30px;
+  border-radius: 100px;
+  padding: 0px;
+  margin: 25%;
+}
+
+#synchButton {
+  position: absolute;
+  left: 95%;
+}
