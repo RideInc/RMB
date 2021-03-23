@@ -24,10 +24,12 @@ const categorySearch = (text) => ({ type: 'CATEGORY_SEARCH',
 const questionSearch = (text) => ({ type: 'QUESTION_SEARCH',
                                     payload: text  })
 
-const confirm = (func = () => {}, id, type, name = '', new_name = '') => ({
+const confirm = (func = () => {}, id, type, name = '', new_name = '', dont_close = false) => ({
   type: 'MODAL',
-  payload: [func, id, type, name, new_name]
+  payload: [func, id, type, name, new_name, dont_close]
 })
+
+const auth = (auth_success = false) => ({ type: 'AUTH', payload: auth_success })
 
 export {
   setCategory,
@@ -40,5 +42,6 @@ export {
   alert,
   categorySearch,
   questionSearch,
-  confirm
+  confirm,
+  auth
 }

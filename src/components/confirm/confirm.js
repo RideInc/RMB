@@ -3,14 +3,16 @@ import { connect } from 'react-redux';
 import { confirm, update } from '../actions'
 
 import { findNameByStringDate } from '../../service/question-data.js';
+import { url, checkAuth } from '../../service/server-requests.js';
 
 import './confirm.css';
 
 class Confirm extends Component {
 
-  keyEsc = (e) => {
-    if (e.key === 'Escape') {
-      this.modalClose();
+  keyCheck = (e) => {
+    if (e.key === 'Escape') this.modalClose();
+    if (e.key === 'Enter') {
+      this.passCheck(document.getElementById('modal_input').value)
     }
   }
 
@@ -22,10 +24,23 @@ class Confirm extends Component {
   }
 
   modalContent = (e) => {
-    const { id } = e.target
-    if (!e.target.hasAttribute('hold')) {
-      if (id === 'yes_modal') this.modalAccept()
-      this.modalClose()
+    let dont_close = this.props.state[9][5]
+    if (!dont_close) {
+      const { id } = e.target
+      if (!e.target.hasAttribute('hold')) {
+        if (id === 'yes_modal') {
+          this.modalAccept()
+          this.modalClose()
+        }
+      }
+    } else {
+      if (e.target.id == 'yes_modal') {
+        this.passCheck(document.getElementById('modal_input').value)
+      }
+      if (e.target.id === 'close_modal') {
+        console.log('вход в автономном режиме')
+        this.modalAccept()
+      }
     }
   }
 
@@ -168,6 +183,18 @@ class Confirm extends Component {
     return findNameByStringDate(research_date)
   }
 
+  passCheck = (pass) => {
+    checkAuth(url, pass)
+      .then((body) => {
+        if (body.acess) {
+          this.modalAccept()
+          console.log('login success')
+          console.log(body.data)
+        }
+        else console.log('неверный пароль')
+      })
+  }
+
   render() {
     const type = this.props.state[9][2]
     const name = this.props.state[9][3]
@@ -220,6 +247,29 @@ class Confirm extends Component {
       fill = <p id="modal_message" className="under-modal"> { text }</p>
     }
 
+    if (type === 'auth') {
+      text = `Авторизация`
+      fill = (
+        <React.Fragment>
+          <p hold="true" id="modal_message" className="under-modal">
+            { text }
+          </p>
+          <div hold="true" id="modul_row" className='row'>
+            <div hold="true" className="col-lg-12">
+              <div hold="true" className="col-lg-6 my">
+                <input
+                  hold="true"
+                  className="input-group-text"
+                  id="modal_input" type="text"
+                  onKeyDown={ (e) => this.keyCheck(e) }
+                />
+              </div>
+            </div>
+          </div>
+        </React.Fragment>
+      )
+    }
+
     if (text !== '') this.modalOpen()
 
     return(
@@ -229,7 +279,7 @@ class Confirm extends Component {
           <div hold="true" className="modal-content">
             { fill }
             <button id="yes_modal"
-              onKeyDown={ (e) => this.keyEsc(e) }
+              onKeyDown={ (e) => this.keyCheck(e) }
               className="btn under-modal red">
               Yes
             </button>
@@ -247,8 +297,8 @@ const mapStateToProps = (state) => ({ state: state })
 const mapDispatchToProps = (dispatch) => {
   return{
     update: () => dispatch(update()),
-    confirm: (func, id, type, name, new_name) => {
-      return dispatch(confirm(func, id, type, name, new_name))
+    confirm: (func, id, type, name, new_name, dont_close) => {
+      return dispatch(confirm(func, id, type, name, new_name, dont_close))
     }
   }
 };

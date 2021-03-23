@@ -1,0 +1,8 @@
+#black_back {
+  background: black;
+  min-height: 100vh;
+}
+
+.auth {
+  border: solid 1px black;
+}
