@@ -5,10 +5,10 @@ import { getResource, postResource } from '../../service/server-requests.js';
 import './synch_button.css';
 
 // для сервера
-const url = 'http://serjride.pythonanywhere.com/rmb'
+const url = 'https://serjride.pythonanywhere.com/rmb'
 
 // для localhost
-// const url  = 'http://127.0.0.1:5000/rmb'
+// const url  = 'https://127.0.0.1:5000/rmb'
 
 class SynchButton extends Component {
 
