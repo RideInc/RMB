@@ -13,7 +13,6 @@ class Head extends Component {
     this.props.questionSearch(e.target.value)
   }
 
-
   render() {
     const categoryId = this.props.state[0]
     const categoryCount = findCountById(categoryId)

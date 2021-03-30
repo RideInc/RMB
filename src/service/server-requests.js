@@ -2,10 +2,10 @@
 // https://swapi.co/api/people/1/
 
 // для сервера
-const url = 'https://serjride.pythonanywhere.com/rmb'
+// const url = 'https://serjride.pythonanywhere.com/rmb'
 
 // для localhost
-// const url  = 'http://127.0.0.1:5000/rmb'
+const url  = 'http://127.0.0.1:5000/rmb'
 
 const postResource = async (url = url) => {
   const res = await fetch(url, {

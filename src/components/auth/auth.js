@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Confirm from '../confirm';
 
 import { connect } from 'react-redux';
-import { confirm, auth } from '../actions';
+import { confirm, auth, profile } from '../actions';
 
 import './auth.css';
 
@@ -40,7 +40,8 @@ const mapDispatchToProps = (dispatch) => {
     confirm: (func, id, type, name, new_name, dont_close) => {
       dispatch(confirm(func, id, type, name, new_name, dont_close))
     },
-    auth: (auth_success) => dispatch(auth(auth_success))
+    auth: (auth_success) => dispatch(auth(auth_success)),
+    profile: (current_profile) => dispatch(profile(current_profile))
   }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Auth);

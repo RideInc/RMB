@@ -31,6 +31,9 @@ const confirm = (func = () => {}, id, type, name = '', new_name = '', dont_close
 
 const auth = (auth_success = false) => ({ type: 'AUTH', payload: auth_success })
 
+const profile = (current_profile) => ({ type: 'PROFILE',
+                                        payload: current_profile })
+
 export {
   setCategory,
   setQuestion,
@@ -43,5 +46,6 @@ export {
   categorySearch,
   questionSearch,
   confirm,
-  auth
+  auth,
+  profile
 }

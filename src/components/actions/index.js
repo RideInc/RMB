@@ -11,7 +11,8 @@ import {
   categorySearch,
   questionSearch,
   confirm,
-  auth
+  auth,
+  profile
 
 } from './actions';
 
@@ -28,6 +29,6 @@ export {
   categorySearch,
   questionSearch,
   confirm,
-  auth
-
+  auth,
+  profile
 }

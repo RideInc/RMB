@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { confirm, update } from '../actions'
+import { confirm, update, profile } from '../actions'
 
 import { findNameByStringDate } from '../../service/question-data.js';
 import { url, checkAuth } from '../../service/server-requests.js';
@@ -23,15 +23,15 @@ class Confirm extends Component {
     btn.focus();
   }
 
-  modalContent = (e) => {
+  modalClick = (e) => {
     let dont_close = this.props.state[9][5]
-    if (!dont_close) {
+    if (this.props.state[9][2] !== 'auth') {
       const { id } = e.target
       if (!e.target.hasAttribute('hold')) {
         if (id === 'yes_modal') {
           this.modalAccept()
-          this.modalClose()
         }
+        this.modalClose()
       }
     } else {
       if (e.target.id == 'yes_modal') {
@@ -40,6 +40,9 @@ class Confirm extends Component {
       if (e.target.id === 'close_modal') {
         console.log('вход в автономном режиме')
         this.modalAccept()
+        setTimeout(() => {
+          document.getElementById('profile_input').value = this.props.state[11]
+        }, 100)
       }
     }
   }
@@ -187,9 +190,11 @@ class Confirm extends Component {
     checkAuth(url, pass)
       .then((body) => {
         if (body.acess) {
-          this.modalAccept()
+          this.modalAccept(true)
           console.log('login success')
-          console.log(body.data)
+          this.props.state[11] = 'main'
+          console.log(body)
+          document.getElementById('profile_input').value = this.props.state[11]
         }
         else console.log('неверный пароль')
       })
@@ -238,13 +243,21 @@ class Confirm extends Component {
 
     if (type === 'del_question') {
       text = `Вы действительно хотите удалить этот вопрос?`
-      fill = <p id="modal_message" className="under-modal"> { text }</p>
+      fill = (
+        <p hold="true" id="modal_message" className="under-modal">
+          { text }
+        </p>
+      )
     }
 
     if (type === 'del_category') {
       text = `Вы действительно
               хотите безвозвратно удалить эту категорию вопросов?`
-      fill = <p id="modal_message" className="under-modal"> { text }</p>
+      fill = (
+        <p hold="true" id="modal_message" className="under-modal">
+          { text }
+        </p>
+      )
     }
 
     if (type === 'auth') {
@@ -275,7 +288,7 @@ class Confirm extends Component {
     return(
         <div id="myModal"
           className="modal"
-          onClick={ (e) => this.modalContent(e) }>
+          onClick={ (e) => this.modalClick(e) }>
           <div hold="true" className="modal-content">
             { fill }
             <button id="yes_modal"
@@ -299,7 +312,8 @@ const mapDispatchToProps = (dispatch) => {
     update: () => dispatch(update()),
     confirm: (func, id, type, name, new_name, dont_close) => {
       return dispatch(confirm(func, id, type, name, new_name, dont_close))
-    }
+    },
+    profile: (current_profile) => dispatch(profile(current_profile))
   }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Confirm);

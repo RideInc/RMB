@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { postResource, url } from '../../service/server-requests.js';
+import { postResource, url } from '../../../service/server-requests.js';
 
 import './synch_button.css';
-
-
 
 class SynchButton extends Component {
 

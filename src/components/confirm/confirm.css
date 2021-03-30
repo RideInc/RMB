@@ -1,3 +1,7 @@
+.col-lg-6.my .input-group-text {
+  margin: 0;
+}
+
 .modal_btn_group {
   max-width: 15%;
 }
@@ -6,6 +10,8 @@
   display: flex;
   margin-left: auto;
   margin-right: auto;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 button.modul_btn:active {
@@ -23,7 +29,7 @@ button.modul_btn {
 }
 
 #modal_input {
-  margin: 0% 0% 0% auto;
+  margin: 0;
 }
 
 .modal {
