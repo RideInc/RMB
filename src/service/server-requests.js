@@ -7,7 +7,13 @@
 // для localhost
 const url  = 'http://127.0.0.1:5000/rmb'
 
-const postResource = async (url = url) => {
+const postResource = async (url = url, profile) => {
+  console.log(profile)
+  let request = {
+    profile: profile,
+    token: localStorage.token,
+    base: localStorage.Base
+  }
   const res = await fetch(url, {
     method: 'POST',
     mode: 'cors',
@@ -15,13 +21,14 @@ const postResource = async (url = url) => {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: localStorage.Base
+    body: JSON.stringify(request)
   })
   let result = await res.json();
   return result;
 };
 
-const checkAuth = async (url = url, pass) => {
+const checkAuth = async (url = url, obj) => {
+  console.log(obj)
   const res = await fetch(`${url}_auth`, {
     method: 'POST',
     mode: 'cors',
@@ -29,7 +36,7 @@ const checkAuth = async (url = url, pass) => {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: pass
+    body: obj
   })
   let result = await res.json();
   return result;

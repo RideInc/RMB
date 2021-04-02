@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { sha256 } from 'js-sha256'
 import { connect } from 'react-redux';
 import { confirm, update, profile } from '../actions'
 
@@ -187,14 +188,16 @@ class Confirm extends Component {
   }
 
   passCheck = (pass) => {
-    checkAuth(url, pass)
+    let sha = {  'pass': sha256(pass) }
+    checkAuth(url, JSON.stringify(sha))
       .then((body) => {
         if (body.acess) {
           this.modalAccept(true)
           console.log('login success')
-          this.props.state[11] = 'main'
+          this.props.profile('main')
           console.log(body)
-          document.getElementById('profile_input').value = this.props.state[11]
+          document.getElementById('profile_input').value = 'main'
+          localStorage.setItem('token', sha.pass )
         }
         else console.log('неверный пароль')
       })

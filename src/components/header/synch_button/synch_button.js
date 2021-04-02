@@ -8,7 +8,8 @@ class SynchButton extends Component {
 
   serverSynch = (e) => {
     document.getElementById('s_btn').classList.toggle('animation')
-    postResource(url)
+    let profile = this.props.state[11]
+    postResource(url, profile)
       .then((body) => {
             console.log('данные отправлены:')
             console.log(body)
