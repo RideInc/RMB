@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { postResource, url } from '../../../service/server-requests.js';
+import { update, profile } from '../../actions'
 
 import './synch_button.css';
 
@@ -16,6 +17,9 @@ class SynchButton extends Component {
             setTimeout(() => {
               document.getElementById('s_btn').classList.toggle('animation')
             }, 1500)
+            this.props.profile(body.next_profile)
+            localStorage.setItem('Base', JSON.stringify(body.data))
+
       })
   }
 
@@ -34,4 +38,10 @@ class SynchButton extends Component {
 }
 
 const mapStateToProps = (state) => ({ state: state })
-export default connect(mapStateToProps)(SynchButton);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    update: () => dispatch(update()),
+    profile: (current_profile) => dispatch(profile(current_profile))
+  }
+};
+export default connect(mapStateToProps, mapDispatchToProps)(SynchButton);

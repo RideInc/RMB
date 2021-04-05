@@ -8,12 +8,13 @@
 const url  = 'http://127.0.0.1:5000/rmb'
 
 const postResource = async (url = url, profile) => {
-  console.log(profile)
   let request = {
-    profile: profile,
+    current_profile: profile,
+    next_profile: document.getElementById('profile_input').value,
     token: localStorage.token,
     base: localStorage.Base
   }
+  console.log(request)
   const res = await fetch(url, {
     method: 'POST',
     mode: 'cors',
