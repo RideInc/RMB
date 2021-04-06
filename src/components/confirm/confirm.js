@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { confirm, update, profile } from '../actions'
 
 import { findNameByStringDate } from '../../service/question-data.js';
-import { url, checkAuth } from '../../service/server-requests.js';
+import { url, postResource, checkAuth } from '../../service/server-requests.js';
 
 import './confirm.css';
 
@@ -40,10 +40,10 @@ class Confirm extends Component {
       }
       if (e.target.id === 'close_modal') {
         console.log('вход в автономном режиме')
+        localStorage.setItem('token', 'Гость')
+        localStorage.setItem('Profile', 'Гость')
         this.modalAccept()
-        setTimeout(() => {
-          document.getElementById('profile_input').value = this.props.state[11]
-        }, 100)
+        location.reload()
       }
     }
   }
@@ -193,11 +193,14 @@ class Confirm extends Component {
       .then((body) => {
         if (body.acess) {
           this.modalAccept(true)
-          console.log('login success')
-          this.props.profile('main')
-          console.log(body)
-          document.getElementById('profile_input').value = 'main'
           localStorage.setItem('token', sha.pass )
+          localStorage.setItem('Profile', 'main' )
+          postResource(url, '', 'main')
+            .then((body) => {
+              localStorage.setItem('Base', JSON.stringify(body.data))
+              localStorage.setItem('Profile', body.next_profile)
+              location.reload()
+            })
         }
         else console.log('неверный пароль')
       })

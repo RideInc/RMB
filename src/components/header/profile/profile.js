@@ -7,8 +7,12 @@ import './profile.css';
 class Profile extends Component {
 
   componentDidMount() {
-    const current_profile = this.props.state[11]
-    console.log(this.props.state[11])
+    if (localStorage.Profile) {
+      const current_profile = localStorage.Profile
+      document.getElementById('profile_input').value = current_profile
+      console.log(current_profile)
+    }
+
   }
 
   render() {

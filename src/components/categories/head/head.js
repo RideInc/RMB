@@ -19,9 +19,11 @@ class Head extends Component {
   }
 
   componentDidMount() {
-    let template_text = this.dateConverter(new Date())
-    this.props.categorySearch(template_text)
-    document.getElementById('category_search').value = template_text
+    if (localStorage.Profile !== 'Гость') {
+      let template_text = this.dateConverter(new Date())
+      this.props.categorySearch(template_text)
+      document.getElementById('category_search').value = template_text
+    }
   }
 
   render() {

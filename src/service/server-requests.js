@@ -2,19 +2,21 @@
 // https://swapi.co/api/people/1/
 
 // для сервера
-// const url = 'https://serjride.pythonanywhere.com/rmb'
+const url = 'https://serjride.pythonanywhere.com/rmb'
 
 // для localhost
-const url  = 'http://127.0.0.1:5000/rmb'
+// const url  = 'http://127.0.0.1:5000/rmb'
 
-const postResource = async (url = url, profile) => {
+const postResource = async (
+    url = url,
+    profile,
+    next_profile = document.getElementById('profile_input').value) => {
   let request = {
     current_profile: profile,
-    next_profile: document.getElementById('profile_input').value,
+    next_profile: next_profile,
     token: localStorage.token,
     base: localStorage.Base
   }
-  console.log(request)
   const res = await fetch(url, {
     method: 'POST',
     mode: 'cors',

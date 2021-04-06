@@ -9,16 +9,16 @@ class SynchButton extends Component {
 
   serverSynch = (e) => {
     document.getElementById('s_btn').classList.toggle('animation')
-    let profile = this.props.state[11]
-    postResource(url, profile)
+    let current_profile = localStorage.Profile
+    postResource(url, current_profile)
       .then((body) => {
-            console.log('данные отправлены:')
-            console.log(body)
             setTimeout(() => {
               document.getElementById('s_btn').classList.toggle('animation')
             }, 1500)
             this.props.profile(body.next_profile)
             localStorage.setItem('Base', JSON.stringify(body.data))
+            localStorage.setItem('Profile', body.next_profile)
+            location.reload()
 
       })
   }
