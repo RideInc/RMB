@@ -9,7 +9,7 @@ import {
   addBookmark } from '../../../service/question-data.js';
 
 import { connect } from 'react-redux';
-import { setQuestion, alert } from '../../actions';
+import { setQuestion, alert, change_base } from '../../actions';
 
 import './edit.css';
 
@@ -46,8 +46,8 @@ class Edit extends Component {
       changeQuestion(currentCategory, currentQuestion, question, answer)
       addedInNEW();
       addBookmark();
+      this.props.change_base(1);
       this.props.alert('Question changed');
-      console.log(currentCategory, currentQuestion)
       if (this.props.state[0] === 2222){
         currentCategory = findCountById(this.props.state[0])
         currentQuestion = findCountById(this.props.state[1], false);
@@ -113,7 +113,8 @@ const mapStateToProps = (state) => ({ state: state })
 const mapDispatchToProps = (dispatch) => {
   return{
     setQuestion: (id) => dispatch(setQuestion(id)),
-    alert: (t, type) => dispatch(alert(t, type))
+    alert: (t, type) => dispatch(alert(t, type)),
+    change_base: (change) => dispatch(change_base(change))
   }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Edit);

@@ -10,12 +10,15 @@ const url = 'https://serjride.pythonanywhere.com/rmb'
 const postResource = async (
     url = url,
     profile,
-    next_profile = document.getElementById('profile_input').value) => {
+    type,
+    next_profile = document.getElementById('profile_input').value,
+  ) => {
   let request = {
     current_profile: profile,
     next_profile: next_profile,
     token: localStorage.token,
-    base: localStorage.Base
+    base: localStorage.Base,
+    type: type
   }
   const res = await fetch(url, {
     method: 'POST',

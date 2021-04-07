@@ -14,7 +14,8 @@ import {
   editQuestion,
   addNewQuestion,
   update,
-  confirm } from '../../actions';
+  confirm,
+  change_base } from '../../actions';
 
 import { connect } from 'react-redux';
 
@@ -34,6 +35,7 @@ const List = (props) => {
     removeQuestion(findCountById(link), findCountById(link, false))
     addedInNEW();
     addBookmark();
+    props.change_base(1);
   }
 
   const checkOnDisabled = (e, func) => {
@@ -54,6 +56,7 @@ const List = (props) => {
     } else {
       props.setCategory(findId(currentCategory))
     }
+    props.change_base(1);
   }
 
   if (!currentCategory) {
@@ -187,7 +190,8 @@ const mapDispatchToProps = (dispatch) => {
     editQuestion: (id) => dispatch(editQuestion(id)),
     addNewQuestion: () => dispatch(addNewQuestion()),
     update: () => dispatch(update()),
-    confirm: (func, id, type) => dispatch(confirm(func, id, type))
+    confirm: (func, id, type) => dispatch(confirm(func, id, type)),
+    change_base: (change) => dispatch(change_base(change))
   }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(List);

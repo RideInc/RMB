@@ -34,6 +34,9 @@ const auth = (auth_success = false) => ({ type: 'AUTH', payload: auth_success })
 const profile = (current_profile) => ({ type: 'PROFILE',
                                         payload: current_profile })
 
+const change_base = (change) => ({ type: 'CHANGE_BASE',
+                                        payload: change })
+
 export {
   setCategory,
   setQuestion,
@@ -47,5 +50,6 @@ export {
   questionSearch,
   confirm,
   auth,
-  profile
+  profile,
+  change_base
 }

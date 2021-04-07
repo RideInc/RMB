@@ -12,7 +12,8 @@ import {
   questionSearch,
   confirm,
   auth,
-  profile
+  profile,
+  change_base
 
 } from './actions';
 
@@ -30,5 +31,6 @@ export {
   questionSearch,
   confirm,
   auth,
-  profile
+  profile,
+  change_base
 }

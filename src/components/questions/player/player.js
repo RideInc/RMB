@@ -7,7 +7,7 @@ import {
   addedInNEW, addBookmark } from '../../../service/question-data.js';
 
 import { setQuestion, hidePlayer, editQuestion, alert,
-  update, confirm  } from '../../actions';
+  update, confirm, change_base  } from '../../actions';
 
 import './player.css';
 
@@ -121,6 +121,7 @@ class Player extends Component {
     removeQuestion(findCountById(link), findCountById(link, false))
     addedInNEW();
     addBookmark();
+    this.props.change_base(1);
 
     if (length !== 2 || currentQuestion !== length - 1) {
       this.props.setQuestion(findId(categoryCount, currentQuestion))
@@ -189,6 +190,7 @@ class Player extends Component {
     }
       const { bookmark } = QuestionData[categoryCount][questionCount]
       addBookmark(currentQuestion);
+      this.props.change_base(1);
       this.setState({ update: this.state.update + 1});
       if (!bookmark) this.props.alert('Question added to bookmarks')
       if (bookmark) this.props.alert('Question removed from bookmarks')
@@ -200,6 +202,7 @@ class Player extends Component {
       if (inputValue !== '') {
         rename(findCountById(categoryId),inputValue);
         this.props.update();
+        this.props.change_base(1);
         this.props.alert('Category renamed');
       } else this.props.alert('ERROR: modal input is empty', false);
 
@@ -375,7 +378,8 @@ const mapDispatchToProps = (dispatch) => {
     update: () => dispatch(update()),
     confirm: (func, id, type, name) => {
       dispatch(confirm(func, id, type, name))
-    }
+    },
+    change_base: (change) => dispatch(change_base(change))
   }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Player);

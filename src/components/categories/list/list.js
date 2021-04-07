@@ -13,7 +13,8 @@ import {
   update,
   editCategory,
   alert,
-  confirm } from '../../actions';
+  confirm,
+  change_base } from '../../actions';
 
 import { connect } from 'react-redux';
 
@@ -24,6 +25,7 @@ class List extends Component {
       addedInNEW();
       addBookmark();
       this.props.update()
+      this.props.change_base(1);
   };
 
   startEdit = (id) => {
@@ -45,6 +47,8 @@ class List extends Component {
     if (name !== '') {
       rename(findCountById(id),name);
       this.props.update();
+      this.props.change_base(1);
+      console.log(this.props.state[12])
       this.props.alert('Category renamed');
       this.closeEdit(id);
 
@@ -181,7 +185,8 @@ const mapDispatchToProps = (dispatch) => {
     update: () => dispatch(update()),
     editCategory: () => dispatch(editCategory()),
     alert: (text, type) => dispatch(alert(text, type)),
-    confirm: (func, id, type) => dispatch(confirm(func, id, type))
+    confirm: (func, id, type) => dispatch(confirm(func, id, type)),
+    change_base: (change) => dispatch(change_base(change))
   }
 };
 

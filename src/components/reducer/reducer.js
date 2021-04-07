@@ -11,7 +11,8 @@ const initialState = [
   '', // Строка поиска по Вопросам
   [null, null, null, '', '', false], // Модальное окно
   false, // аутентификация
-  'Гость' // профиль
+  'Гость', // профиль
+  0 // произошли ли изменения базы за сессию?
 ]
 
 const reducer = (state = initialState, action) => {
@@ -31,7 +32,8 @@ const reducer = (state = initialState, action) => {
         '',
         state[9],
         state[10],
-        state[11]
+        state[11],
+        state[12]
       ];
 
     case 'SET_CATEGORY':
@@ -47,7 +49,8 @@ const reducer = (state = initialState, action) => {
         '',
         state[9],
         state[10],
-        state[11]
+        state[11],
+        state[12]
       ];
 
     case 'SET_QUESTION':
@@ -63,7 +66,8 @@ const reducer = (state = initialState, action) => {
         state[8],
         state[9],
         state[10],
-        state[11]
+        state[11],
+        state[12]
       ];
 
     case 'HIDE_PLAYER':
@@ -79,7 +83,8 @@ const reducer = (state = initialState, action) => {
         state[8],
         state[9],
         state[10],
-        state[11]
+        state[11],
+        state[12]
       ];
 
     case 'ADD_NEW_QUESTION':
@@ -95,7 +100,8 @@ const reducer = (state = initialState, action) => {
         state[8],
         state[9],
         state[10],
-        state[11]
+        state[11],
+        state[12]
       ];
 
     case 'EDIT_QUESTION':
@@ -111,7 +117,8 @@ const reducer = (state = initialState, action) => {
         state[8],
         state[9],
         state[10],
-        state[11]
+        state[11],
+        state[12]
       ];
 
     case 'ALERT':
@@ -127,7 +134,8 @@ const reducer = (state = initialState, action) => {
         state[8],
         state[9],
         state[10],
-        state[11]
+        state[11],
+        state[12]
       ];
 
     case 'CATEGORY_SEARCH':
@@ -143,7 +151,8 @@ const reducer = (state = initialState, action) => {
         state[8],
         state[9],
         state[10],
-        state[11]
+        state[11],
+        state[12]
       ];
 
     case 'QUESTION_SEARCH':
@@ -159,7 +168,8 @@ const reducer = (state = initialState, action) => {
         action.payload,
         state[9],
         state[10],
-        state[11]
+        state[11],
+        state[12]
       ];
 
     case 'MODAL':
@@ -175,7 +185,8 @@ const reducer = (state = initialState, action) => {
         state[8],
         action.payload,
         state[10],
-        state[11]
+        state[11],
+        state[12]
       ];
 
       case 'AUTH':
@@ -191,7 +202,8 @@ const reducer = (state = initialState, action) => {
           state[8],
           state[9],
           action.payload,
-          state[11]
+          state[11],
+          state[12]
         ];
 
         case 'PROFILE':
@@ -207,8 +219,26 @@ const reducer = (state = initialState, action) => {
             state[8],
             state[9],
             state[10],
-            action.payload
+            action.payload,
+            state[12]
           ];
+
+          case 'CHANGE_BASE':
+            return state = [
+              state[0] ,
+              state[1],
+              state[2],
+              state[3],
+              state[4],
+              state[5],
+              state[6],
+              state[7],
+              state[8],
+              state[9],
+              state[10],
+              state[11],
+              action.payload
+            ];
 
     default:
       return state;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setCategory, alert } from '../../actions';
+import { setCategory, alert, change_base } from '../../actions';
 import {
   QuestionData,
   createQuestion,
@@ -21,6 +21,7 @@ class AddQuestion extends Component {
       createQuestion(currentCategory, question, answer, id)
       addedInNEW();
       this.props.alert('Question added');
+      this.props.change_base(1);
       this.newQuestion.focus();
       this.newQuestion.value = '';
       this.newAnswer.value = '';
@@ -90,7 +91,8 @@ const mapStateToProps = (state) => ({ state: state })
 const mapDispatchToProps = (dispatch) => {
   return {
     SelectCategory: (id) => dispatch(setCategory(id)),
-    alert: (text, type) => dispatch(alert(text, type))
+    alert: (text, type) => dispatch(alert(text, type)),
+    change_base: (change) => dispatch(change_base(change))
    }
 };
 

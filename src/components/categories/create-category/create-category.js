@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { createCategory } from '../../../service/question-data.js';
 
-import { update, alert } from '../../actions';
+import { update, alert, change_base } from '../../actions';
 
 import './create-category.css';
 
@@ -15,6 +15,7 @@ class CreateCategory extends Component {
       const id = Date.now();
       createCategory(value, id);
       this.props.update();
+      this.props.change_base(1);
       this.newCategoryInput.value = '';
       this.props.alert('Category created');
     } else {
@@ -66,7 +67,8 @@ const mapStateToProps = (state) => ({ state: state })
 const mapDispatchToProps = (dispatch) => {
   return{
     update: () => dispatch(update()),
-    alert: (text,type) => dispatch(alert(text,type))
+    alert: (text,type) => dispatch(alert(text,type)),
+    change_base: (change) => dispatch(change_base(change))
   }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(CreateCategory)

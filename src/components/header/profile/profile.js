@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { postResource, url } from '../../../service/server-requests.js';
 
 import './profile.css';
 
@@ -10,7 +9,6 @@ class Profile extends Component {
     if (localStorage.Profile) {
       const current_profile = localStorage.Profile
       document.getElementById('profile_input').value = current_profile
-      console.log(current_profile)
     }
 
   }

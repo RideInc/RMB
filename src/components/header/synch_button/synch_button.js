@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { postResource, url } from '../../../service/server-requests.js';
-import { update, profile } from '../../actions'
+import { profile } from '../../actions'
 
 import './synch_button.css';
 
@@ -10,7 +10,8 @@ class SynchButton extends Component {
   serverSynch = (e) => {
     document.getElementById('s_btn').classList.toggle('animation')
     let current_profile = localStorage.Profile
-    postResource(url, current_profile)
+    let changes = this.props.state[12]
+    postResource(url, current_profile, changes)
       .then((body) => {
             setTimeout(() => {
               document.getElementById('s_btn').classList.toggle('animation')
@@ -40,7 +41,6 @@ class SynchButton extends Component {
 const mapStateToProps = (state) => ({ state: state })
 const mapDispatchToProps = (dispatch) => {
   return {
-    update: () => dispatch(update()),
     profile: (current_profile) => dispatch(profile(current_profile))
   }
 };

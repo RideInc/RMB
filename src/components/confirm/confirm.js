@@ -189,13 +189,14 @@ class Confirm extends Component {
 
   passCheck = (pass) => {
     let sha = {  'pass': sha256(pass) }
+    let changes = this.props.state[12]
     checkAuth(url, JSON.stringify(sha))
       .then((body) => {
         if (body.acess) {
           this.modalAccept(true)
           localStorage.setItem('token', sha.pass )
           localStorage.setItem('Profile', 'main' )
-          postResource(url, '', 'main')
+          postResource(url, '', changes, 'main')
             .then((body) => {
               localStorage.setItem('Base', JSON.stringify(body.data))
               localStorage.setItem('Profile', body.next_profile)
