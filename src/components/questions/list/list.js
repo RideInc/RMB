@@ -70,8 +70,13 @@ const List = (props) => {
   if (currentCategory !== null) {
 
     const search = (items, term) => {
+      try {
+        document.getElementById('question-list').style.overflow = ''
+      } catch(e) {
+        console.log(e)
+      }
       if (term.length === 0) return items;
-
+      document.getElementById('question-list').style.overflow = 'hidden'
       return items.filter((item, i) => {
         if (i !== 0) return item.question
                                 .toLowerCase()
@@ -175,7 +180,7 @@ const List = (props) => {
   }
 
   return (
-    <div className={`list ${ scroll }`}>
+    <div id="question-list" className={`list ${ scroll }`}>
       { content }
     </div>
   );

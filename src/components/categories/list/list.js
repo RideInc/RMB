@@ -73,9 +73,13 @@ class List extends Component {
   }
 
   search = (items, term) => {
-
+    try {
+      document.querySelector('.list-group .list').style.overflow = ''
+    } catch(e) {
+      console.log(e)
+    }
     if (term.length === 0) return items;
-
+    document.querySelector('.list-group .list').style.overflow = 'hidden'
     return items.filter((item) => {
       return item[0].name
               .toLowerCase()

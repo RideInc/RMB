@@ -1,0 +1,24 @@
+
+
+
+
+#exitBtn .exitBtn:focus {
+  box-shadow: 0 0 0 0.2rem rgb(255 255 255 / 0%);
+}
+
+#exitBtn .exitBtn:hover {
+  background-color: rgb(255 255 255 / 100%)
+}
+
+#exitBtn .exitBtn {
+  width: 30px;
+  height: 30px;
+  border-radius: 100px;
+  padding: 0px;
+  margin: 25%;
+}
+
+#exitBtn {
+  position: absolute;
+  left: 95%;
+}

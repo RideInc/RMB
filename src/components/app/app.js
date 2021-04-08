@@ -21,7 +21,6 @@ import { url, checkAuth } from '../../service/server-requests.js';
 class App extends Component {
 
   render() {
-    console.log(this.props.state[12])
     let alert = null;
     let left = <Categories />
     let right = <Questions />;
