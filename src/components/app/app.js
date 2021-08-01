@@ -21,6 +21,17 @@ import { url, checkAuth } from '../../service/server-requests.js';
 class App extends Component {
 
   render() {
+    let change = this.props.state[12]
+    window.addEventListener('beforeunload', function (e) {
+      console.log(change)
+      if (change) {
+        let confirmationMessage = "";
+        e.returnValue = confirmationMessage;
+        return confirmationMessage;
+      }
+    });
+
+
     let alert = null;
     let left = <Categories />
     let right = <Questions />;

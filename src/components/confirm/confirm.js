@@ -280,7 +280,7 @@ class Confirm extends Component {
                 <input
                   hold="true"
                   className="input-group-text"
-                  id="modal_input" type="text"
+                  id="modal_input" type="password"
                   onKeyDown={ (e) => this.keyCheck(e) }
                 />
               </div>

@@ -7,10 +7,7 @@ const url = 'https://serjride.pythonanywhere.com/rmb'
 // для localhost
 // const url  = 'http://127.0.0.1:5000/rmb'
 
-const postResource = async (
-    url = url,
-    profile,
-    type,
+const postResource = async (url = url, profile, type,
     next_profile = document.getElementById('profile_input').value,
   ) => {
   let request = {

@@ -20,7 +20,6 @@ class SynchButton extends Component {
             localStorage.setItem('Base', JSON.stringify(body.data))
             localStorage.setItem('Profile', body.next_profile)
             location.reload()
-
       })
   }
 

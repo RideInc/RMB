@@ -4,10 +4,10 @@
 
 #profile input {
   background-color: white;
-  border-bottom: solid 1px #dfdfdf;
   width: 111px;
   height: 25px;
   margin-top: 10px;
+  border-bottom: solid 1px #dfdfdf;
 }
 
 #profile {

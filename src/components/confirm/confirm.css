@@ -3,7 +3,8 @@
 }
 
 .modal_btn_group {
-  max-width: 15%;
+  max-width: 8.5%;
+  background-color: #efefef;
 }
 
 .col-lg-6.my {
@@ -17,8 +18,7 @@
 button.modul_btn:active {
   height: 20px;
   border: 0;
-  background: #DAE4D3;
-
+  font-size: 10px;
 }
 
 button.modul_btn {
@@ -26,6 +26,7 @@ button.modul_btn {
   border: 0;
   cursor: pointer;
   transition: 0.1s;
+  padding-right: 0px;
 }
 
 #modal_input {

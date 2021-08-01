@@ -255,7 +255,7 @@ class Player extends Component {
       <ul className="list-group" id="question_list">
         <li className="list-group-item no-active question-bar-head header">
           <Link
-            to="/"
+            to="/RMB/"
             className="item crumb question-bar"
             onClick={ () => this.props.hidePlayer() }>
             <i className="fas fa-chevron-left crumb"></i>

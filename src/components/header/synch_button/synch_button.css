@@ -16,7 +16,8 @@
 }
 
 #synchButton .synchButton:hover {
-  background-color: rgb(255 255 255 / 100%)
+  background-color: rgb(255 255 255 / 100%);
+  border-color: white;
 }
 
 #synchButton .synchButton {
