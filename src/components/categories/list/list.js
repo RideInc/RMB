@@ -90,6 +90,13 @@ class List extends Component {
   render() {
     const term = this.props.state[7]
     let visibleItems = this.search(QuestionData, term);
+
+    if (document.querySelector('.list-group .list')) {
+      if (visibleItems.length > 11) {
+        document.querySelector('.list-group .list').style.overflow = ''
+      }
+    }
+
     const items = visibleItems.map((item, i) => {
 
       const { name, id } = item[0];

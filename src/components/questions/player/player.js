@@ -227,6 +227,7 @@ class Player extends Component {
       }
     }
 
+
   render() {
     const currentCategory = findCountById(this.props.state[0]);
     const currentQuestion = findCountById(this.props.state[1], false);

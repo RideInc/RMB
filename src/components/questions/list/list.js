@@ -71,6 +71,7 @@ const List = (props) => {
 
     const search = (items, term) => {
       try {
+        // console.log(document.getElementById('question-list'))
         document.getElementById('question-list').style.overflow = ''
       } catch(e) {
         console.log(e)
@@ -87,6 +88,13 @@ const List = (props) => {
 
     const term = props.state[8]
     let visibleItems = search(QuestionData[currentCategory], term);
+
+    if (document.getElementById('question-list')) {
+      if (visibleItems.length > 11) {
+        document.getElementById('question-list').style.overflow = ''
+      }
+    }
+
 
     if (QuestionData[currentCategory] !== undefined) {
       content = visibleItems.map((item, i) => {

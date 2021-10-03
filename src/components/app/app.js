@@ -20,6 +20,20 @@ import { url, checkAuth } from '../../service/server-requests.js';
 
 class App extends Component {
 
+  cancelTabulation = (e, func) => {
+    if ('TEXTAREA' === e.target.tagName && e.keyCode === 9) {
+      e.preventDefault();
+      let textarea      = e.target
+      let selStart      = textarea.selectionStart
+      let selEnd        = textarea.selectionEnd
+      let before        = textarea.value.substring( 0, selStart )
+      let slection      = textarea.value.substring( selStart, selEnd )
+      let after         = textarea.value.substr( selEnd )
+      let selection_new = '\t'
+      textarea.value    = before + selection_new + after
+    }
+  }
+
   render() {
     let change = this.props.state[12]
     window.addEventListener('beforeunload', function (e) {
@@ -53,7 +67,8 @@ class App extends Component {
     }
 
     return (
-      <div className="app">
+      <div className="app"
+        onKeyDown={ (e) => this.cancelTabulation(e) }>
         { main_app }
       </div>
     );
